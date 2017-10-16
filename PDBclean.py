@@ -3,9 +3,16 @@
 import gzip , os , Bio.PDB.Polypeptide , Bio.PDB.PDBParser
 
 #Collect Structures
+os.system('rsync -rlpt -v -z --delete --port=33444 rsync.wwpdb.org::ftp/data/structures/divided/pdb/ ./DATABASE')
 current = os.getcwd()
 os.mkdir('PDBDatabase')
-os.system('mv ./DATABASE/*/*.ent.gz ./PDBDatabase')
+filelist = os.listdir('DATABASE')
+for directories in filelist:
+	files = os.listdir(current + '/DATABASE/' + directories)
+	for afile in files:
+		location = (current + '/DATABASE/' + directories + '/' + afile)
+		print(location)
+		os.rename(location , current + '/PDBDatabase/' + afile)
 os.system('rm -r ./DATABASE')
 #Separate Chains
 pdbfilelist = os.listdir('PDBDatabase')
