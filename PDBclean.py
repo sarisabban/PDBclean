@@ -39,13 +39,13 @@ for thefile in pdbfilelist:
 	Type = ppb.build_peptides(structure)
 	#Delete Non-Protein Files
 	if Type == []:
-		print('[-] NOT PROTEIN\t' , TheFile)
+		print('[-] NOT PROTEIN\t' , thefile)
 		os.remove(TheFile)
 	else:
 		#Delete Structures Larger Than 150 or Smaller Than 100 Amino Acids
 		length = int(str(Type[0]).split()[2].split('=')[1].split('>')[0])
 		if length > 150 or length < 100:
-			print('[-] WRONG SIZE\t' , TheFile)
+			print('[-] WRONG SIZE\t' , thefile)
 			os.remove(TheFile)
 		else:
-			print('[+] GOOD\t' , TheFile)
+			print('[+] GOOD\t' , thefile)
