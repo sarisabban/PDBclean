@@ -26,7 +26,8 @@ for thefile in pdbfilelist:
 		line = line.decode()
 		if line.startswith('ATOM') or line.startswith('ANISOU'):
 			chain = line[21]
-			output = open(TheName[0] + chain + '.pdb' , 'a')
+			Name = TheName[0].split('pdb')
+			output = open(Name[1] + '_' + chain + '.pdb' , 'a')
 			output.write(line)
 			output.close()
 	os.remove(TheFile)
