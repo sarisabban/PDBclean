@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-import gzip , os , Bio.PDB.Polypeptide , Bio.PDB.PDBParser
+import gzip , sys , os , Bio.PDB.Polypeptide , Bio.PDB.PDBParser
+
+From = int(sys.argv[1])
+To = int(sys.argv[2])
 
 #Collect Structures
 os.system('rsync -rlpt -v -z --delete --port=33444 rsync.wwpdb.org::ftp/data/structures/divided/pdb/ ./DATABASE')
@@ -45,7 +48,7 @@ for thefile in pdbfilelist:
 	else:
 		#Delete Structures Larger Than 150 or Smaller Than 100 Amino Acids
 		length = int(str(Type[0]).split()[2].split('=')[1].split('>')[0])
-		if length > 150 or length < 100:
+		if length > To or length < From:
 			print('[-] WRONG SIZE\t' , thefile)
 			os.remove(TheFile)
 		else:
