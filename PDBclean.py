@@ -49,4 +49,3 @@ for thefile in pdbfilelist:
 			os.remove(TheFile)
 		else:
 			print('[+] GOOD\t' , TheFile)
-			pass
