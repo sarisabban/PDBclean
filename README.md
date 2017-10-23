@@ -13,4 +13,6 @@ A small script that cleans the PDB database
 ## How To Use:
 Use the following command to run the script (~72 hours):
 
-`python3 PDBclean.py`
+`python3 PDBclean.py SMALLER_THAN LARGER_THAN`
+
+SMALLER_THAN LARGER_THAN means delete all proteins that are less than SMALLER_THAN and larger than LARGER_THAN
